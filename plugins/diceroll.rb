@@ -19,15 +19,15 @@ module Diceroller
     
     user = event.user.username
 
-    if user == 'Esjitu'    
+    #if user == 'Example'    
 
-      event.respond 'No'
+    #  event.respond 'You aren\'t allowed to roll'
 
-    else
+    #else
 
       event.respond "#{user} rolled a #{roll}"
 
-    end
+    #end
 
   end
 
