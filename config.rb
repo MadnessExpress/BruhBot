@@ -66,7 +66,7 @@ def plugins()
 
   #8ball
   plugins << Eightball
-  
+
   return plugins
 
 end

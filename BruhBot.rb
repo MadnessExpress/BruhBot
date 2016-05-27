@@ -17,11 +17,17 @@ plugins.each { |m| bot.include! m }
 puts "This bot's invite URL is #{bot.invite_url}."
 puts 'Click on it to invite it to your server.'
 
-bot.command(:exit, help_available: false) do |event|
+bot.command(:shutdown, help_available: false) do |event|
   break unless event.user.id == 70979549097103360 # Replace number with your ID
 
   bot.send_message(event.channel.id, shutdownmessage)
   exit
+end
+
+bot.command(:game,  min_args: 1, description: "sets bot game") do |event, *game|
+    event.bot.game = game.join(' ')
+    nil
+
 end
 
 bot.run
