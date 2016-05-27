@@ -67,6 +67,9 @@ def plugins()
   #8ball
   plugins << Eightball
 
+  #Rate: This allows you to rate stuff.
+  plugins << Rate
+
   return plugins
 
 end
