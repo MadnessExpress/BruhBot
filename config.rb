@@ -20,6 +20,19 @@ def shutdownmessage()
 
 end
 
+#Define Play messages below.
+
+def playmessage()
+
+  playmessage = []
+
+  playmessage << "Hey #{$play_groupname}, #{$play_user} wants to play #{$play_gamename}" 
+  playmessage << "Hey #{$play_groupname}, come play #{$play_gamename} with #{$play_user}"
+
+  return playmessage
+
+end
+
 #Define 8ball outcomes below
 
 def eightball()
@@ -67,8 +80,11 @@ def plugins()
   #8ball
   plugins << Eightball
 
-  #Rate: This allows you to rate stuff.
+  #Rate: This allows users to rate stuff.
   plugins << Rate
+
+  #Play: This allows users to notify groups that they want to play a game.
+  plugins << Play
 
   return plugins
 

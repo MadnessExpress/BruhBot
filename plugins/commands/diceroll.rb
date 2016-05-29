@@ -5,7 +5,7 @@ module Diceroller
   fudge = ['+', '-', 'blank']
   #x = 12
 
-  command(:roll, min_args: 1, description: 'Rolls a Die', usage: 'roll <text>') do |event, text, user|
+  command(:roll, min_args: 1, description: 'Rolls a Die', usage: 'roll <text>') do |event, text|
     info = text.split("d") 
 
     #event.respond text  
