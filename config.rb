@@ -33,6 +33,19 @@ def playmessage()
 
 end
 
+#Define Choice messages
+
+def choicemessage()
+
+  choicemessage = []
+
+  choicemessage << "I choose #{$choice_choice}!"
+  choicemessage << "I think #{$choice_choice} is awesome!!!!"
+
+  return choicemessage
+
+end
+
 #Define 8ball outcomes below
 
 def eightball()
@@ -85,6 +98,9 @@ def plugins()
 
   #Play: This allows users to notify groups that they want to play a game.
   plugins << Play
+
+  #Choice: This allows you to have the bot choose something.
+  plugins << Choice
 
   return plugins
 
