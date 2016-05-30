@@ -58,19 +58,6 @@ def shutdownmessage()
 
 end
 
-#Define Play messages below.
-
-def playmessage()
-
-  playmessage = []
-
-  playmessage << "Hey #{$play_groupname}, #{$play_user} wants to play #{$play_gamename}" 
-  playmessage << "Hey #{$play_groupname}, come play #{$play_gamename} with #{$play_user}"
-
-  return playmessage
-
-end
-
 #Define Choice messages
 
 def choicemessage()
