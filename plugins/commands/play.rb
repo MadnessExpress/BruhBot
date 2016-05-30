@@ -1,5 +1,15 @@
 module Play
 
+########################################################################################################################################
+
+#Below are the options for the play message
+playmessage = []
+
+playmessage << "Hey #{groupname}, #{user} wants to play #{gamename}"
+playmessage << "Hey #{groupname}, come play #{gamename} with #{user}"
+
+#DON'T EDIT BELOW THIS LINE#############################################################################################################
+
   extend Discordrb::Commands::CommandContainer
 
   command(:play, min_args: 2, description: 'Invite groups to play a game.', usage: 'play <gamename>, <groupname>') do |event, *text|
