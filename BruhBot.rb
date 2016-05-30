@@ -1,13 +1,14 @@
 #!/home/atlas/.rbenv/shims/ruby
 
 require 'discordrb'
+require 'cleverbot'
 
 require_relative 'config.rb'
 
 Dir['plugins/events/*.rb'].each { |r| require_relative r }
 Dir['plugins/commands/*.rb'].each { |r| require_relative r }
 
-bot = Discordrb::Commands::CommandBot.new token: 'MTg1MDIyNzg1NDUyNTA3MTM3.Cic7ZQ.ONL7sthgX5ojb_NRj-QF48nMofk', application_id: 185022247713505280, prefix: commandprefix
+bot = Discordrb::Commands::CommandBot.new token: discordtoken, application_id: discordappid, prefix: commandprefix
 
 plugins.each { |m| bot.include! m }
 
