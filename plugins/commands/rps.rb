@@ -8,11 +8,7 @@ module Rps
 
     option = data["options"].sample
 
-    #option = options.sample
-
     message = data["messages"].sample
-
-    #message = messages.sample
 
     insert = {:option=> option}
 
