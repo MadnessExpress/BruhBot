@@ -3,7 +3,6 @@ module Diceroller
   
   coin = ['You flipped heads', 'You flipped tails']
   fudge = ['+', '-', 'blank']
-  #x = 12
 
   command(:roll, min_args: 1, description: 'Rolls a Die', usage: 'roll <text>') do |event, text|
     info = text.split("d") 

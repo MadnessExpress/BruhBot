@@ -1,14 +1,6 @@
 module Play
 
-#Config#################################################################################################################################
-
-#Below are the options for the play message
-playmessage = []
-
-playmessage << "Hey #{groupname}, #{user} wants to play #{gamename}"
-playmessage << "Hey #{groupname}, come play #{gamename} with #{user}"
-
-#DON'T EDIT BELOW THIS LINE#############################################################################################################
+  data = YAML::load_file(File.join(__dir__, 'config/play-config.yml'))
 
   extend Discordrb::Commands::CommandContainer
 
@@ -21,12 +13,18 @@ playmessage << "Hey #{groupname}, come play #{gamename} with #{user}"
     infoarray = info.split(", ")
 
     #Assign global variables.
-    $play_gamename = infoarray[0]
-    $play_groupname = infoarray[1]
-    $play_user = event.user.username
+    gamename = infoarray[0]
+    groupname = infoarray[1]
+    user = event.user.username
+
+    #Get messages from config
+    playmessage = data["playmessage"].sample
+
+    #Shove variables into string.
+    input = {:gamename=> gamename, :groupname=> groupname, :user=> user} 
 
     #Output a random message from the play message section of the config.
-    event.respond playmessage.sample
+    event.respond playmessage % input
 
   end
 

@@ -2,8 +2,10 @@
 
 require 'discordrb'
 require 'cleverbot'
+require 'yaml'
 
 require_relative 'config.rb'
+require_relative 'apikeys.rb'
 
 Dir['plugins/events/*.rb'].each { |r| require_relative r }
 Dir['plugins/commands/*.rb'].each { |r| require_relative r }

@@ -1,43 +1,5 @@
 #This is the BruhBot configuration file.
 
-#API keys ############################################
-
-#Discord
-def discordtoken()
-
-  discordtoken = ''
-
-  return discordtoken
-
-end
-
-def discordappid()
-
-  discordappid = ''
-
-  return discordappid
-
-end
-
-#Cleverbot
-def cleverapiuser()
-
-  cleverapiuser = ''
- 
-  return cleverapiuser
-
-end
-
-def cleverapikey()
-
-  cleverapikey = ''
-
-  return cleverapikey
-
-end
-
-#######################################################
-
 #Define your command prefix below
 
 def commandprefix()
@@ -130,8 +92,11 @@ def plugins()
   #Say: This makes the bot say stuff
   plugins << Say
 
-  #Steam
+  #Cleverbot
   plugins << CleverbotPlugin
+
+  #Rps: This is the rock, paper, scissors plugin
+  plugins << Rps
 
   return plugins
 
