@@ -20,16 +20,6 @@ def shutdownmessage()
 
 end
 
-#Define reaction images below
-
-def smug()
-
-  smug = ['http://i.imgur.com/3WeW7RK.png', 'http://i.imgur.com/waRuHXo.png', 'http://i.imgur.com/DShJUv2.png']
-
-  return smug
-
-end
-
 #Define plugins below
 
 def plugins()
