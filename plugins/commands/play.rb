@@ -21,10 +21,10 @@ module Play
     playmessage = data["playmessage"].sample
 
     #Shove variables into string.
-    input = {:gamename=> gamename, :groupname=> groupname, :user=> user} 
+    insert = {:gamename=> gamename, :groupname=> groupname, :user=> user} 
 
     #Output a random message from the play message section of the config.
-    event.respond playmessage % input
+    event.respond playmessage % insert
 
   end
 

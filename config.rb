@@ -20,19 +20,6 @@ def shutdownmessage()
 
 end
 
-#Define Choice messages
-
-def choicemessage()
-
-  choicemessage = []
-
-  choicemessage << "I choose #{$choice_choice}!"
-  choicemessage << "I think #{$choice_choice} is awesome!!!!"
-
-  return choicemessage
-
-end
-
 #Define reaction images below
 
 def smug()
@@ -74,7 +61,7 @@ def plugins()
   plugins << Play
 
   #Choice: This allows you to have the bot choose something.
-  plugins << Choice
+  plugins << Choose
 
   #Say: This makes the bot say stuff
   plugins << Say

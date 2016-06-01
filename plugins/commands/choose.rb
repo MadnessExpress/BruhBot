@@ -1,4 +1,6 @@
-module Choice
+module Choose
+
+  data = YAML::load_file(File.join(__dir__, 'config/choose-config.yml'))
 
   extend Discordrb::Commands::CommandContainer
 
@@ -8,9 +10,13 @@ module Choice
 
     choicearray = choices.split(', ')
 
-    $choice_choice = choicearray.sample
+    choice = choicearray.sample
 
-    event.respond choicemessage.sample
+    message = data["choicemessage"].sample
+
+    insert = {:choice=> choice}
+
+    event.respond message % insert
 
   end
 
