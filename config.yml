@@ -1,0 +1,44 @@
+#This is the BruhBot core configuration file.
+
+#Define your command prefix below
+prefix: "!"
+
+#Define a shutdown messages below
+shutdownmessage:
+  - I am going to sleep now, goodnight!
+
+#Define plugins below
+
+#To disable a module simply comment out the line that contains (plugins << module name) for each unwanted module.
+#To add a new module simply add in the code (plugins << Your Module Name) without the parentheses and fill in the 
+#name of your module and make sure it does not conflict with the naming of any other modules.
+plugins:
+    #Tableflip
+  - Tableflip
+
+    #Dice Roller
+  - Diceroller
+
+    #Reactions
+  - Reactions
+
+    #8ball
+  - Eightball
+
+    #Rate: This allows users to rate stuff.
+  - Rate
+
+    #Play: This allows users to notify groups that they want to play a game.
+  - Play
+
+    #Choice: This allows you to have the bot choose something.
+  - Choose
+
+    #Say: This makes the bot say stuff
+  - Say
+
+    #Cleverbot
+  - CleverbotPlugin
+
+    #Rps: This is the rock, paper, scissors plugin
+  - Rps
