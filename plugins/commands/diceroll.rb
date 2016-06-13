@@ -1,32 +1,60 @@
 module Diceroller
+
   extend Discordrb::Commands::CommandContainer
   
   coin = ['You flipped heads', 'You flipped tails']
   fudge = ['+', '-', 'blank']
 
-  command(:roll, min_args: 1, description: 'Rolls a Die', usage: 'roll <text>') do |event, text|
-    info = text.split("d") 
+  command(:roll, description: 'Rolls a Die', usage: 'roll <text>') do |event, text, symbol, mod|
 
-    #event.respond text  
-
-    a = info[0].to_i
-    b = info[1].to_i   
-
-    x = a*b 
-
-    roll = rand(a..x)
-    
     user = event.user.username
 
-    #if user == 'Example'    
+    #puts text.length
 
-    #  event.respond 'You aren\'t allowed to roll'
+    if text != nil
+    
+      info = text.split("d") 
 
-    #else
+      #Get dice integers from input
+      min = info[0].to_i
+      max = info[1].to_i   
+
+      #Get max possible roll
+      max = min*max
+
+      roll = rand(min..max)
+
+      mod = mod.to_i
+
+        if (mod > 0) || (mod < 0)    
+
+          if symbol == "+"
+
+            total = roll + mod
+
+            event.respond "#{user} rolled a #{roll} #{symbol} #{mod} for a total of #{total}"
+
+          elsif symbol == "-"
+
+            total = roll - mod
+ 
+            event.respond "#{user} rolled a #{roll} #{symbol} #{mod} for a total of #{total}"
+
+          end
+
+        else
+
+          event.respond "#{user} rolled a #{roll}"
+
+        end
+
+    else
+
+      roll = rand(1..6) 
 
       event.respond "#{user} rolled a #{roll}"
 
-    #end
+    end
 
   end
 

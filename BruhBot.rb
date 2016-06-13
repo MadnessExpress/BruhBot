@@ -3,6 +3,8 @@
 require 'discordrb'
 require 'cleverbot'
 require 'yaml'
+require 'pastebin-api'
+require 'sqlite3'
 
 data = YAML::load_file(File.join(__dir__, 'config.yml'))
 apidata = YAML::load_file(File.join(__dir__, 'apikeys.yml'))
