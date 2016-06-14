@@ -42,3 +42,6 @@ plugins:
 
     #Rps: This is the rock, paper, scissors plugin
   - Rps
+
+    #Msg: This lets you send a message to other channels.
+  - Msg
