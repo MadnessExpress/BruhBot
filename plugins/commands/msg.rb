@@ -1,16 +1,26 @@
 module Msg
 
   extend Discordrb::Commands::CommandContainer
-  extend Discordrb::Cache
-#  extend Discordrb::Bot
 
-  command(:msg, min_args: 2, description: "Send a message to another channel.", usage: "msg <channel name> <message>") do |channel, *message|
+  command(:msg, min_args: 2, description: "Send a message to another channel.", usage: "msg <channel name> <message> --srv <servername>") do |event, channel, *message|
 
-    channelarray = find_channel(channel, server_name = nil, type: "text")
+    #Turns message into string.
+    message = message.join(' ')
 
+    messagearray = message.split('--srv').map(&:strip)
+
+    message = messagearray[0]
+
+    servername = messagearray[1]
+
+    #Gets array of matching channels.
+    channelarray = event.bot.find_channel(channel, servername)
+
+    #Gets the first array result for channel id.
     channelid = channelarray[0]
 
-    send_message(channelid, message, tts = false, server_id = nil)
+    #Sends message to the specified channel.
+    event.bot.send_message(channelid, message, tts = false)
 
   end
 
