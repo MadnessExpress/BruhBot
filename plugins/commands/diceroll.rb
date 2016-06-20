@@ -1,69 +1,68 @@
 module Diceroller
 
   extend Discordrb::Commands::CommandContainer
-  
-  coin = ['You flipped heads', 'You flipped tails']
-  fudge = ['+', '-', 'blank']
 
-  command(:roll, description: 'Rolls a Die', usage: 'roll <text>') do |event, text, symbol, mod|
+  command(:roll, description: "Rolls a die or dice", usage: "roll <text>") do |event, dice, symbol, mod|
 
-    user = event.user.username
+    #Load config file.
+    data = YAML::load_file(File.join(__dir__, 'config/diceroll.yml'))
 
-    #puts text.length
+    #Do this if the argument after roll is fudge.
+    if (dice == "fudge")
 
-    if text != nil
+      #Output a roll of fudge dice from the array in the config.
+      event << "You rolled the following fudge dice: (:game_die:#{data["fudge"].sample}, :game_die:#{data["fudge"].sample}, :game_die:#{data["fudge"].sample}, :game_die:#{data["fudge"].sample})"
+       
+    #Do this if there is an argument after roll. EX: roll 2d6
+    elsif (dice != nil)
     
-      info = text.split("d") 
+      #Remove the d from between the number of dice and the number of sides of the dice.
+      info = dice.split("d") 
 
-      #Get dice integers from input
-      min = info[0].to_i
-      max = info[1].to_i   
+      #Assign a random number to roll based on the number of dice and the number of sides of the dice.
+      #Max roll = number of dice * number of sides on the dice.
+      roll = rand(info[0].to_i..(info[0].to_i * info[1].to_i))
 
-      #Get max possible roll
-      max = min*max
+      #Do this if the symbol is a plus sign.
+      if symbol == "+"
 
-      roll = rand(min..max)
+        #Output the user, what they rolled plus their modifer, and show their total. 
+        event << "#{event.user.username} rolled a (:game_die:#{roll} #{symbol} #{mod.to_i}) for a total of :game_die:#{roll + mod.to_i}"
 
-      mod = mod.to_i
+      #Do this if the symbol is a minus sign.
+      elsif symbol == "-"
 
-        if (mod > 0) || (mod < 0)    
+        #Output the user, what they rolled minus their modifer, and show their total.
+        event << "#{event.user.username} rolled a (:game_die:#{roll} #{symbol} #{mod.to_i}) for a total of :game_die:#{roll + mod.to_i}"
+      
+      #Do this in all other situations.
+      else
 
-          if symbol == "+"
+        #Output the user, and what they rolled.
+        event << "#{event.user.username} rolled a #{roll}"
 
-            total = roll + mod
-
-            event.respond "#{user} rolled a #{roll} #{symbol} #{mod} for a total of #{total}"
-
-          elsif symbol == "-"
-
-            total = roll - mod
- 
-            event.respond "#{user} rolled a #{roll} #{symbol} #{mod} for a total of #{total}"
-
-          end
-
-        else
-
-          event.respond "#{user} rolled a #{roll}"
-
-        end
-
+      #End if statement to check for symbols.
+      end
+    
+    #Do this in all other situations. EX: The roll command is used with no arguments.
     else
 
-      roll = rand(1..6) 
+      #Output the user, and what they rolled on a six sided die.
+      event << "#{event.user.username} rolled a #{rand(1..6)}"
 
-      event.respond "#{user} rolled a #{roll}"
-
+    #End the if statement to see what dice need to be rolled.
     end
-
+  
+  #End roll command
   end
 
-  command(:coin, description: 'Flip a coin') do |event|
-    event.respond coin.sample 
+  command(:coin, description: "Flip a coin") do |event|
+
+    #Output an option from the coin array in the config.
+    event << data["coin"].sample 
+
+  #End coin flip command
   end
 
-  command(:fudge, description: 'Roll a fudge die') do |event|
-    event.respond "You rolled #{fudge.sample}, #{fudge.sample}, #{fudge.sample}, #{fudge.sample}"
-  end
-
+#End diceroll module
 end

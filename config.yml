@@ -38,10 +38,16 @@ plugins:
   - Say
 
     #Cleverbot
-  - CleverbotPlugin
+  #- CleverbotPlugin
 
     #Rps: This is the rock, paper, scissors plugin
   - Rps
 
     #Msg: This lets you send a message to other channels.
   - Msg
+
+    #Lottery: This lets you hold a lottery.
+  - Lottery
+
+    #Auth: This lets you add authorized users for admin commands
+  - Db

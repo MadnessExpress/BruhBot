@@ -1,22 +1,14 @@
 module Choose
 
-  data = YAML::load_file(File.join(__dir__, 'config/choose-config.yml'))
-
   extend Discordrb::Commands::CommandContainer
 
-  command(:choose, min_args: 2, description: 'Make the bot choose something randomly.', usage: 'choose <choice>, <choice>') do |event, *text|
+  command(:choose, min_args: 2, description: 'Make the bot choose something randomly.', usage: 'choose <choice>, <choice>') do |event, *choices|
 
-    choices = text.join(' ')
+    #Load config file
+    data = YAML::load_file(File.join(__dir__, 'config/choose-config.yml'))
 
-    choicearray = choices.split(', ')
-
-    choice = choicearray.sample
-
-    message = data["choicemessage"].sample
-
-    insert = {:choice=> choice}
-
-    event.respond message % insert
+    #Output a message from the choicemessage array in the config file, and insert a random choice from the ones provided
+    event << data["choicemessage"].sample % {:choice=> choices.join(" ").split(", ").sample}
 
   end
 

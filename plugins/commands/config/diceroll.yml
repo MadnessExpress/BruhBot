@@ -1,0 +1,10 @@
+#Coin array, make sure this only has one option for heads and one option for tails.
+coin:
+  - "You flipped heads."
+  - "You flipped tails."
+
+#Fudge Array: There isn't much reason to change this as fudge dice all consist of 2: +, 2: -, and 2: blank sides
+fudge:
+  - "+"
+  - "-"
+  - "blank"

@@ -1,18 +1,14 @@
 module Rps
 
-  data = YAML::load_file(File.join(__dir__, 'config/rps-config.yml'))
-
   extend Discordrb::Commands::CommandContainer
 
-  command(:rps, min_args: 1, description: 'Play rock, paper, scissors with the bot.', usage: 'rps rock, rps paper, or rps scissors') do |event|
+  command(:rps, min_args: 1, description: "Play rock, paper, scissors with the bot.", usage: "rps rock, rps paper, or rps scissors") do |event|
 
-    option = data["options"].sample
+    #Load config file
+    data = YAML::load_file(File.join(__dir__, "config/rps-config.yml"))
 
-    message = data["messages"].sample
-
-    insert = {:option=> option}
-
-    event.respond message % insert
+    #Output a message with a randomly selected message from the config and insert a random option from the config.
+    event << data["messages"].sample % {:option=> data["options"].sample}
 
   end
 
