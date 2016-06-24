@@ -44,10 +44,13 @@ plugins:
   - Rps
 
     #Msg: This lets you send a message to other channels.
-  - Msg
+  #- Msg
 
     #Lottery: This lets you hold a lottery.
   - Lottery
 
     #Auth: This lets you add authorized users for admin commands
-  - Db
+  #- Db
+
+    #Quotes: This lets you add quotes and display random quotes.
+  #- Quotes
