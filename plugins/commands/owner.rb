@@ -6,7 +6,7 @@ module Owner
 
     break unless event.user.id == 70979549097103360
 
-    exec(update.sh)
+    exec(File.join(__dir__, "../../setup.sh"))
 
   end
 

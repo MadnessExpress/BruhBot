@@ -1,7 +1,5 @@
 #!/bin/bash
 
-screenname="BruhBot"
+git pull
 
-git pull https://github.com/FormalHellhound/BruhBot.git
-
-screen -d -m -S $screenname ./BruhBot.rb
+./BruhBot.rb
