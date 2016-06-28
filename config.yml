@@ -54,3 +54,6 @@ plugins:
 
     #Quotes: This lets you add quotes and display random quotes.
   #- Quotes
+
+    #Owner: This adds some commands for the bot hoster.
+  - Owner
