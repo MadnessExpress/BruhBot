@@ -6,9 +6,9 @@ module Owner
 
     break unless event.user.id == 70979549097103360
 
-    event << "Updating and restarting!"
+    event.respond "Updating and restarting!"
 
-    exec(File.join(__dir__, "../../update.sh"))
+    event.bot.stop && exec(File.join(__dir__, "../../update.sh"))
 
   end
 
