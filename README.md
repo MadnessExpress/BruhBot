@@ -17,5 +17,4 @@ To install run the following command:
 
 Usage
 -----
-
 *coming soon*
