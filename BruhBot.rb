@@ -33,7 +33,9 @@ bot.command(:shutdown, help_available: false) do |event|
   message = data["shutdownmessage"].sample
 
   bot.send_message(event.channel.id, message)
-  exit
+
+  bot.stop
+
 end
 
 bot.command(:game,  min_args: 1, description: "sets bot game") do |event, *game|

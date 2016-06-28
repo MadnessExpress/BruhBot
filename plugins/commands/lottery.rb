@@ -35,7 +35,7 @@ module Lottery
 
       else
 
-        break
+        puts "False"
 
       end
 
