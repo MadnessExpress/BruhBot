@@ -8,7 +8,7 @@ module Eightball
     data = YAML::load_file(File.join(__dir__, "config/8ball-config.yml"))
 
     #Output a random message from the eightball array in the config file.
-    event << ":8ball: #{data["eightball"].sample}"
+    event.respond ":8ball: #{data["eightball"].sample}"
 
   #End of the 8ball command.
   end

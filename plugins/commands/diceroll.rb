@@ -11,7 +11,7 @@ module Diceroller
     if (dice == "fudge")
 
       #Output a roll of fudge dice from the array in the config.
-      event << "You rolled the following fudge dice: (:game_die:#{data["fudge"].sample}, :game_die:#{data["fudge"].sample}, :game_die:#{data["fudge"].sample}, :game_die:#{data["fudge"].sample})"
+      event.respond "You rolled the following fudge dice: (:game_die:#{data["fudge"].sample}, :game_die:#{data["fudge"].sample}, :game_die:#{data["fudge"].sample}, :game_die:#{data["fudge"].sample})"
        
     #Do this if there is an argument after roll. EX: roll 2d6
     elsif (dice != nil)
@@ -27,19 +27,19 @@ module Diceroller
       if symbol == "+"
 
         #Output the user, what they rolled plus their modifer, and show their total. 
-        event << "#{event.user.username} rolled a (:game_die:#{roll} #{symbol} #{mod.to_i}) for a total of :game_die:#{roll + mod.to_i}"
+        event.respond "#{event.user.username} rolled a (:game_die:#{roll} #{symbol} #{mod.to_i}) for a total of :game_die:#{roll + mod.to_i}"
 
       #Do this if the symbol is a minus sign.
       elsif symbol == "-"
 
         #Output the user, what they rolled minus their modifer, and show their total.
-        event << "#{event.user.username} rolled a (:game_die:#{roll} #{symbol} #{mod.to_i}) for a total of :game_die:#{roll + mod.to_i}"
+        event.respond "#{event.user.username} rolled a (:game_die:#{roll} #{symbol} #{mod.to_i}) for a total of :game_die:#{roll + mod.to_i}"
       
       #Do this in all other situations.
       else
 
         #Output the user, and what they rolled.
-        event << "#{event.user.username} rolled a #{roll}"
+        event.respond "#{event.user.username} rolled a #{roll}"
 
       #End if statement to check for symbols.
       end
@@ -48,7 +48,7 @@ module Diceroller
     else
 
       #Output the user, and what they rolled on a six sided die.
-      event << "#{event.user.username} rolled a #{rand(1..6)}"
+      event.respond "#{event.user.username} rolled a #{rand(1..6)}"
 
     #End the if statement to see what dice need to be rolled.
     end
@@ -59,7 +59,7 @@ module Diceroller
   command(:coin, description: "Flip a coin") do |event|
 
     #Output an option from the coin array in the config.
-    event << data["coin"].sample 
+    event.respond data["coin"].sample 
 
   #End coin flip command
   end

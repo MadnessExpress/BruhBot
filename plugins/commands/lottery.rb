@@ -17,31 +17,33 @@ module Lottery
 
   command(:lotto, min_args: 1, max_args: 1, description: 'Start a lottery.', usage: '!lotto <start>/<enter>/<end>') do |event, arg|
 
-    userroleid = []
+    event.message.delete
+
+    #userroleid = []
     
-    userrole.each do |role|
+    #userrole.each do |role|
 
-      userroleid << event.server.roles.find { |r| r.name == role }
+      #userroleid << event.server.roles.find { |r| r.name == role }
 
-    end
+    #end
 
-    test = false
+    #test = false
 
-    userroleid.each do |role|
+    #userroleid.each do |role|
 
-      if (event.user.role?(role) == true)
+      #if (event.user.role?(role) == true)
 
-        test = true
+        #test = true
 
-      else
+      #else
 
-        puts "False"
+        #puts "False"
 
-      end
+      #end
 
-    end
+    #end
 
-    puts test
+    #puts test
 
     #If command argument is start and the lottery is not already started, start the lottery.
     if (arg == 'start') && (started == 0)
@@ -54,12 +56,12 @@ module Lottery
       #Set user that started the lottery
       startuser = event.user.id
 
-      event << "#{user} has started a lottery!"
+      event.respond "#{user} has started a lottery!"
 
     #If command argument is start and the lottery is already started
     elsif (arg == 'start') && (started == 1)
 
-      event << "There is already a lottery in progress."
+      event.respond "There is already a lottery in progress."
 
     elsif (arg == 'enter') && (started == 1)
 
@@ -69,13 +71,13 @@ module Lottery
 
       if checkuser == true
 
-        event << "You have already entered the lottery."
+        event.respond "You have already entered the lottery."
 
       elsif checkuser == false
 
         lottousers << user
 
-        event << "#{user} has entered the lottery."
+        event.respond "#{user} has entered the lottery."
 
       end
 
@@ -89,13 +91,13 @@ module Lottery
 
       startuser = ''
 
-      event << "The lottery has ended and #{winner} is the winner!"
+      event.respond "The lottery has ended and #{winner} is the winner!"
 
     #elsif (arg == 'kill') && (started == 1) && 
 
     else
 
-      event << "Invalid parameters."
+      event.respond "Invalid parameters."
 
     end
 

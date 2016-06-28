@@ -8,7 +8,7 @@ module Choose
     data = YAML::load_file(File.join(__dir__, 'config/choose-config.yml'))
 
     #Output a message from the choicemessage array in the config file, and insert a random choice from the ones provided
-    event << data["choicemessage"].sample % {:choice=> choices.join(" ").split(", ").sample}
+    event.respond data["choicemessage"].sample % {:choice=> choices.join(" ").split(", ").sample}
 
   end
 

@@ -8,7 +8,7 @@ module Rps
     data = YAML::load_file(File.join(__dir__, "config/rps-config.yml"))
 
     #Output a message with a randomly selected message from the config and insert a random option from the config.
-    event << data["messages"].sample % {:option=> data["options"].sample}
+    event.respond data["messages"].sample % {:option=> data["options"].sample}
 
   end
 

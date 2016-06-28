@@ -6,7 +6,7 @@ module Say
 
     event.message.delete
 
-    event << message.join(' ')
+    event.respond  message.join(' ')
 
   end
 

@@ -12,4 +12,26 @@ module Owner
 
   end
 
+  command(:shutdown, help_available: false) do |event|
+  
+    break unless event.user.id == 70979549097103360 # Replace number with your ID
+
+    data = YAML::load_file(File.join(__dir__, "config/owner-config.yml"))
+
+    event.respond "#{data["shutdownmessage"].sample}"
+
+    nil
+
+    event.bot.stop
+
+  end
+
+  command(:game,  min_args: 1, description: "sets bot game") do |event, *game|  
+  
+    event.bot.game = game.join(' ')
+    
+    nil
+
+  end
+
 end
