@@ -1,5 +1,7 @@
 module Lottery
 
+  require_relative("../../requiredmodules.rb")
+
   extend Discordrb::Commands::CommandContainer
 
   #The variables below load up when the bot is started so that they can store info outside of the command.
@@ -11,43 +13,22 @@ module Lottery
   started = 0
 
   #The user that started the lottery.
-  startuser = ''
-
-  userrole = ["Admin", "Bot Commander"]
+  startuser = ""
 
   command(:lotto, min_args: 1, max_args: 1, description: 'Start a lottery.', usage: '!lotto <start>/<enter>/<end>') do |event, arg|
 
     event.message.delete
 
-    #userroleid = []
-    
-    #userrole.each do |role|
+    data = YAML::load_file(File.join(__dir__, "config/lottery-config.yml"))
 
-      #userroleid << event.server.roles.find { |r| r.name == role }
+    userauth = Required::Auth.new
 
-    #end
-
-    #test = false
-
-    #userroleid.each do |role|
-
-      #if (event.user.role?(role) == true)
-
-        #test = true
-
-      #else
-
-        #puts "False"
-
-      #end
-
-    #end
-
-    #puts test
+    userauth.auth(data["adminroles"], event.server.roles, event.user)
 
     #If command argument is start and the lottery is not already started, start the lottery.
     if (arg == 'start') && (started == 0)
 
+      #Variable showing lottery is started
       started = 1
 
       #Get user mention for message
@@ -93,7 +74,11 @@ module Lottery
 
       event.respond "The lottery has ended and #{winner} is the winner!"
 
-    #elsif (arg == 'kill') && (started == 1) && 
+    elsif (arg == 'kill') && (started == 1) && (adminuser == true)
+
+      started = 0
+
+      event.respond "#{event.user.mention} has killed this lottery"
 
     else
 

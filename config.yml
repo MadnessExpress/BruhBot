@@ -3,10 +3,6 @@
 #Define your command prefix below
 prefix: "!"
 
-#Define a shutdown messages below
-shutdownmessage:
-  - I am going to sleep now, goodnight!
-
 #Define plugins below
 
 #To disable a module simply comment out the line that contains (plugins << module name) for each unwanted module.
@@ -49,11 +45,11 @@ plugins:
     #Lottery: This lets you hold a lottery.
   - Lottery
 
-    #Auth: This lets you add authorized users for admin commands
-  #- Db
+    #Db: This lets you set up a database for various commands.
+  - Db
 
     #Quotes: This lets you add quotes and display random quotes.
-  #- Quotes
+  - Quotes
 
     #Owner: This adds some commands for the bot hoster.
   - Owner
