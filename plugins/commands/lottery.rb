@@ -74,7 +74,7 @@ module Lottery
 
       event.respond "The lottery has ended and #{winner} is the winner!"
 
-    elsif (arg == 'kill') && (started == 1) && (adminuser == true)
+    elsif (arg == 'kill') && (started == 1) && (userauth.adminuser == true)
 
       started = 0
 
