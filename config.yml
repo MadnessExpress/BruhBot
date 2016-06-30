@@ -56,3 +56,6 @@ plugins:
 
     #Short: This lets you shorten URLs
   - Short
+
+    #Paste: This allows you to create Pastebin pastes
+  - Paste
