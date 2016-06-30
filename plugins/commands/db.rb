@@ -8,6 +8,8 @@ module Db
 
     break unless (event.user.id == event.server.owner.id || event.user.id == data["ownerid"])
 
+    Dir.mkdir("db") unless File.exists?("db")
+
     db = SQLite3::Database.new "db/#{event.server.id}.db"
 
     db.execute <<-SQL
