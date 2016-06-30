@@ -59,3 +59,6 @@ plugins:
 
     #Paste: This allows you to create Pastebin pastes
   - Paste
+
+    #Avatar: This lets you fetch a user's avatar.
+  - Avatar

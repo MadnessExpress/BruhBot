@@ -6,6 +6,8 @@ module Quotes
 
   command(:quoteadd, min_args: 1, description: "Display a random quote.", usage: "quote") do |event, *text|
 
+    event.message.delete
+
     #Load config file
     data = YAML::load_file(File.join(__dir__, "config/quotes-config.yml"))
 
@@ -34,7 +36,7 @@ module Quotes
 
       db.close if db
 
-      event.respond "The quote: #{text.join(" ")}: was added to the database."
+      event.respond "The quote: #{text.join(" ")}: was added to the database by #{event.user.username}."
 
     else
 
