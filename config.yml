@@ -53,3 +53,6 @@ plugins:
 
     #Owner: This adds some commands for the bot hoster.
   - Owner
+
+    #Short: This lets you shorten URLs
+  - Short
