@@ -34,7 +34,7 @@ module Owner
 
     break unless event.user.id == data["ownerid"]
   
-    event.bot.game = game.join(' ')
+    event.bot.game = game.join(" ")
     
     nil
 
