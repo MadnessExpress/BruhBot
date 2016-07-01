@@ -6,7 +6,7 @@ module Owner
 
     data = YAML::load_file(File.join(__dir__, "config/ownerid.yml"))
 
-    break unless event.user.id == data["ownerid"]
+    break unless data["ownerid"].include? event.user.id
 
     event.respond "Updating and restarting!"
 
@@ -18,7 +18,7 @@ module Owner
   
     data = YAML::load_file(File.join(__dir__, "config/ownerid.yml"))
 
-    break unless event.user.id == data["ownerid"]
+    break unless data["ownerid"].include? event.user.id
 
     data = YAML::load_file(File.join(__dir__, "config/owner-config.yml"))
 
@@ -32,7 +32,7 @@ module Owner
 
     data = YAML::load_file(File.join(__dir__, "config/ownerid.yml"))
 
-    break unless event.user.id == data["ownerid"]
+    break unless data["ownerid"].include? event.user.id
   
     event.bot.game = game.join(" ")
     
