@@ -24,7 +24,7 @@ plugins.each { |m| bot.include!(self.class.const_get(m)) }
 
 # Here we output the invite URL to the console so the bot account can be invited to the channel. This only has to be
 # done once, afterwards, you can remove this part if you want
-puts "This bot's invite URL is #{bot.invite_url}."
+puts "This bot's invite URL is #{bot.invite_url}&permissions=261120"
 puts 'Click on it to invite it to your server.'
 
 bot.run
