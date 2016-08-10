@@ -1,3 +1,4 @@
+@export = ["Diceroller"]
 module Diceroller
 
   extend Discordrb::Commands::CommandContainer

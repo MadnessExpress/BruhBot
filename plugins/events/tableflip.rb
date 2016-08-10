@@ -1,3 +1,4 @@
+@export = ["Tableflip"]
 module Tableflip
 
   extend Discordrb::EventContainer

@@ -1,3 +1,4 @@
+@export = ["Play"]
 module Play
 
   extend Discordrb::Commands::CommandContainer

@@ -1,3 +1,4 @@
+@export = ["Paste"]
 module Paste
 
   extend Discordrb::Commands::CommandContainer

@@ -1,3 +1,4 @@
+@export = ["Lottery"]
 module Lottery
 
   require_relative("../../requiredmodules.rb")

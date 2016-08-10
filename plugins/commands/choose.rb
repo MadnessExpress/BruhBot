@@ -1,3 +1,4 @@
+@export = ["Choose"]
 module Choose
 
   extend Discordrb::Commands::CommandContainer

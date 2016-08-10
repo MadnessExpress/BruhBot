@@ -1,3 +1,4 @@
+@export = ["Quotes"]
 module Quotes
 
   require_relative("../../requiredmodules.rb")
@@ -11,14 +12,18 @@ module Quotes
     #Load config file
     data = YAML::load_file(File.join(__dir__, "config/quotes-config.yml"))
 
+    log = userauth = Required::Logger.new
+
+    log.logs("command", event.user.username, event.user.id, event.message) unless data["logging"] != 1
+
     #Load database
     db = SQLite3::Database.new "db/#{event.server.id}.db"
 
-    userauth = Required::Auth.new
+    userAuth = Required::Auth.new
 
-    userauth.auth(data["adminroles"], event.server.roles, event.user)
+    userAuth.auth(data["adminroles"], event.server.roles, event.user)
 
-    if (userauth.adminuser == true)
+    if (userAuth.adminUser == true)
 
       begin
 

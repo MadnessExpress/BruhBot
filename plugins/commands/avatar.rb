@@ -1,3 +1,4 @@
+@export = ["Avatar"]
 module Avatar
 
   extend Discordrb::Commands::CommandContainer

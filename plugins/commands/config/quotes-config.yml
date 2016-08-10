@@ -1,2 +1,4 @@
+logging: 1
+
 adminroles:
   - Admin

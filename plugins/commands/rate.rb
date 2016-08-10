@@ -1,3 +1,4 @@
+@export = ["Rate"]
 module Rate
 
   extend Discordrb::Commands::CommandContainer

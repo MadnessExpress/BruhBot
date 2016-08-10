@@ -1,3 +1,4 @@
+@export = ["Short"]
 module Short
 
   extend Discordrb::Commands::CommandContainer

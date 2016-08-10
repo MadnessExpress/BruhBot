@@ -1,3 +1,4 @@
+@export = ["Say"]
 module Say
 
   extend Discordrb::Commands::CommandContainer

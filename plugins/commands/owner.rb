@@ -1,3 +1,4 @@
+@export = ["Owner"]
 module Owner
 
   extend Discordrb::Commands::CommandContainer

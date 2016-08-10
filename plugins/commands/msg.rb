@@ -1,3 +1,4 @@
+@export = ["Msg"]
 module Msg
 
   extend Discordrb::Commands::CommandContainer

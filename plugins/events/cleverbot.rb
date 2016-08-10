@@ -1,31 +1,19 @@
-#module CleverbotPlugin
+@export = ["CleverbotPlugin"]
+module CleverbotPlugin
 
-  #extend Discordrb::EventContainer
+  extend Discordrb::EventContainer
 
   #On bot mention.
-  #mention do |event|
-
-    #Load config file
-    #apidata = YAML::load_file(File.join(__dir__, '../../apikeys.yml'))
+  mention do |event|
 
     #Connect to Cleverbot
-    #cleverbot = Cleverbot.new(apidata["cleverapiuser"], apidata["cleverapikey"])
-
-    #event << cleverbot.say(event.message.content.gsub(/@186576354186100748>/, ""))
+    cleverbot = RubyCleverbot.new()
 
     #Sumbit message to Cleverbot minus the mention and output the response.
-    #event << cleverbot.say(event.message.content.split("@186576354186100748").map(&:strip)
-
-    #message = event.message.content.split(" <@192334740651638784>" || "<@192334740651638784> ")
-    
-    #message.delete("<@192334740651638784> ")
-
-    #message = message.join(' ')
-
-    #event << message
+    event.respond(cleverbot.send_message(event.message.content.gsub(/<@!?\d+>/, "")))
 
   #End bot mention event.
-  #end
+  end
 
 #End CleverbotPlugin module
-#end
+end

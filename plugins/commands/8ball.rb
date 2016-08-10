@@ -1,3 +1,4 @@
+@export = ["Eightball"]
 module Eightball
 
   extend Discordrb::Commands::CommandContainer

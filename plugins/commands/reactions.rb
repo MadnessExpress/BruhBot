@@ -1,3 +1,4 @@
+@export = ["Reactions"]
 module Reactions
 
   extend Discordrb::Commands::CommandContainer

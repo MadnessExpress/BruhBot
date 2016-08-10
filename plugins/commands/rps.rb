@@ -1,3 +1,4 @@
+@export = ["Rps"]
 module Rps
 
   extend Discordrb::Commands::CommandContainer
