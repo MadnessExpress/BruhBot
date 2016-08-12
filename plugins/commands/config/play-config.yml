@@ -1,4 +1,0 @@
-playmessage:
-  - Hey %{groupname}, %{user} wants to play %{gamename}
-  - Hey %{groupname}, come play %{gamename} with %{user}
-

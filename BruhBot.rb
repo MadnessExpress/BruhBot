@@ -6,9 +6,13 @@ require "yaml"
 require "pastebin-api"
 require "sqlite3"
 require "ruby_cleverbot"
+require "wikipedia"
+require "imdb"
 
-data = YAML::load_file(File.join(__dir__, 'config.yml'))
-apidata = YAML::load_file(File.join(__dir__, 'apikeys.yml'))
+$LOAD_PATH << File.join(File.dirname(__FILE__))
+
+data = YAML::load_file('config.yml')
+apidata = YAML::load_file('apikeys.yml')
 
 commandprefix = data["prefix"]
 
