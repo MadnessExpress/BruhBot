@@ -21,7 +21,7 @@ discordappid = apidata["discordappid"]
 
 bot = Discordrb::Commands::CommandBot.new token: discordtoken, application_id: discordappid, prefix: commandprefix
 
-Dir["plugins/*/*.rb"].each do |file|
+Dir["plugins/*/*/*.rb"].each do |file|
   load file
   if @export != nil
         @export.each { |m| bot.include!(self.class.const_get(m)) }
