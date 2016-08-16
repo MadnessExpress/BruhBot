@@ -7,7 +7,7 @@ require "pastebin-api"
 require "sqlite3"
 require "ruby_cleverbot"
 require "wikipedia"
-require "imdb"
+require "youtube_it"
 
 $LOAD_PATH << File.join(File.dirname(__FILE__))
 
