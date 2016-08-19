@@ -1,0 +1,17 @@
+#API keys
+
+#Discord: This has to be filled in for the bot to work
+discordtoken: ""
+discordappid: ""
+
+#Googl: Fill this in if you want to use googl url shortener. googlip is the external ip of the machine running your bot.
+googlip: ""
+googlapikey: ""
+
+#Pastebin: Fill this in if you want to use the Pastebin plugin
+pastebinapikey: ""
+
+#My Anime List: Fill this in if you want to use the myanimelist plugin.
+myanimelistuser: ""
+myanimelistpass: ""
+

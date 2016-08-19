@@ -9,6 +9,7 @@ require "ruby_cleverbot"
 require "wikipedia"
 require "yourub"
 require "json"
+require "myanimelist"
 
 $LOAD_PATH << File.join(File.dirname(__FILE__))
 
