@@ -1,5 +1,6 @@
 #!/home/atlas/.rbenv/shims/ruby
 
+require "bundler/setup"
 require "discordrb"
 require "googl"
 require "yaml"
