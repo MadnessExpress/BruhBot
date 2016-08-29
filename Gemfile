@@ -1,9 +1,11 @@
 source "https://rubygems.org"
-
-gem "discordrb"
+gem "discordrb", git: 'git://github.com/meew0/discordrb.git'
 gem "googl"
-gem "yaml"
 gem "pastebin-api"
 gem "sqlite3"
-gem "wikipedia"
-gem "formal-cleverbot"
+gem "ruby_cleverbot"
+gem "wikipedia-client"
+gem "yourub"
+gem "json"
+gem "myanimelist"
+gem "rounding"
