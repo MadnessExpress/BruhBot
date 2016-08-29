@@ -64,6 +64,9 @@ end
    	if (/\A\d+\z/.match(number) != nil)
 	  if (data["ownerid"].include? event.user.id)
         event.channel.prune(number.to_i)
+		id = event.respond("[#{number.to_i}] messages cleared.").id
+		sleep 10
+		event.message_delete(attributes = {:id => id})
 	  else
 	    event.respond("You don't have permission to use that command.")
 	  end
