@@ -10,6 +10,7 @@ require "wikipedia"
 require "yourub"
 require "json"
 require "myanimelist"
+require "rounding"
 
 $LOAD_PATH << File.join(File.dirname(__FILE__))
 
@@ -20,6 +21,11 @@ commandprefix = data["prefix"]
 
 discordtoken = apidata["discordtoken"]
 discordappid = apidata["discordappid"]
+
+Dir.mkdir("db") unless File.exists?("db")
+Dir.mkdir("logs") unless File.exists?("logs")
+Dir.mkdir("logs/commandlogs") unless File.exists?("logs/commandlogs")
+Dir.mkdir("logs/messagelogs") unless File.exists?("logs/messagelogs")
 
 bot = Discordrb::Commands::CommandBot.new token: discordtoken, application_id: discordappid, prefix: commandprefix
 
@@ -51,24 +57,18 @@ end
     event.bot.game = game.join(" ")
     nil
   end
-
-  bot.command(:db, min_args: 0, max_args: 0, description: "Manage database.") do |event|
+  
+  bot.command(:clear,  min_args: 1, max_args: 1, description: "Prune X messages from channel") do |event, number|  
     data = YAML::load_file("owneroptions.yml")
-    break unless (event.user.id == event.server.owner.id) || (data["ownerid"].include? event.user.id)
-    Dir.mkdir("db") unless File.exists?("db")
-    Dir.mkdir("logs") unless File.exists?("logs")
-    Dir.mkdir("logs/commandlogs") unless File.exists?("logs/commandlogs")
-    Dir.mkdir("logs/messagelogs") unless File.exists?("logs/messagelogs")
-    db = SQLite3::Database.new "db/#{event.server.id}.db"
-
-    db.execute <<-SQL
-      create table if not exists quotes (
-        quote text,
-        UNIQUE(quote)
-      );          
-    SQL
-
-    event.respond "Database has been set up."
+   	if (/\A\d+\z/.match(number) != nil)
+	  if (data["ownerid"].include? event.user.id)
+        event.channel.prune(number.to_i)
+	  else
+	    event.respond("You don't have permission to use that command.")
+	  end
+	else
+	  event.respond("Please enter a valid number.")
+	end
   end
   
 # Here we output the invite URL to the console so the bot account can be invited to the channel. This only has to be
