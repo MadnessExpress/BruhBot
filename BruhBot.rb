@@ -60,6 +60,7 @@ end
   
   bot.command(:clear,  min_args: 1, max_args: 1, description: "Prune X messages from channel") do |event, number|  
     data = YAML::load_file("owneroptions.yml")
+	event.message.delete
    	if (/\A\d+\z/.match(number) != nil)
 	  if (data["ownerid"].include? event.user.id)
         event.channel.prune(number.to_i)
