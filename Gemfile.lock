@@ -1,0 +1,161 @@
+GIT
+  remote: https://github.com/FormalHellhound/discordrb.git
+  revision: b967bb8012579a9b52e5edd439f5f0e4dc524cbf
+  branch: improvements/permitted_roles
+  specs:
+    discordrb (3.1.1)
+      activesupport
+      discordrb-webhooks
+      opus-ruby
+      rbnacl
+      rest-client
+      websocket-client-simple (>= 0.3.0)
+    discordrb-webhooks (0.1.0)
+      rest-client
+
+GIT
+  remote: https://github.com/FormalHellhound/myanimelist.git
+  revision: e9b96e5d76d05fcdd2c70a35cc2dfd681f849e5a
+  specs:
+    myanimelist (0.0.6)
+      activesupport
+      rest-client
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (4.2.7.1)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
+    ast (2.3.0)
+    autoparse (0.3.3)
+      addressable (>= 2.3.1)
+      extlib (>= 0.9.15)
+      multi_json (>= 1.0.0)
+    dentaku (2.0.10)
+    domain_name (0.5.20161129)
+      unf (>= 0.0.5, < 1.0.0)
+    event_emitter (0.2.5)
+    extlib (0.9.16)
+    faraday (0.11.0)
+      multipart-post (>= 1.2, < 3)
+    ffi (1.9.17)
+    googl (0.7.1)
+      httparty (~> 0.10)
+      json (>= 1.4.6)
+    google-api-client (0.8.7)
+      activesupport (>= 3.2, < 5.0)
+      addressable (~> 2.3)
+      autoparse (~> 0.3)
+      extlib (~> 0.9)
+      faraday (~> 0.9)
+      googleauth (~> 0.3)
+      launchy (~> 2.4)
+      multi_json (~> 1.10)
+      retriable (~> 1.4)
+      signet (~> 0.6)
+    googleauth (0.5.1)
+      faraday (~> 0.9)
+      jwt (~> 1.4)
+      logging (~> 2.0)
+      memoist (~> 0.12)
+      multi_json (~> 1.11)
+      os (~> 0.9)
+      signet (~> 0.7)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
+    i18n (0.7.0)
+    json (1.8.6)
+    jwt (1.5.6)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    little-plugger (1.1.4)
+    logging (2.1.0)
+      little-plugger (~> 1.1)
+      multi_json (~> 1.10)
+    memoist (0.15.0)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
+    minitest (5.10.1)
+    multi_json (1.12.1)
+    multi_xml (0.6.0)
+    multipart-post (2.0.0)
+    netrc (0.11.0)
+    opus-ruby (1.0.1)
+      ffi
+    os (0.9.6)
+    parser (2.3.3.1)
+      ast (~> 2.2)
+    pastebin-api (1.0.5)
+    powerpack (0.1.1)
+    public_suffix (2.0.5)
+    rainbow (2.2.1)
+    rbnacl (4.0.1)
+      ffi
+    rest-client (2.0.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
+    retriable (1.4.1)
+    rounding (1.0.1)
+    rubocop (0.47.0)
+      parser (>= 2.3.3.1, < 3.0)
+      powerpack (~> 0.1)
+      rainbow (>= 1.99.1, < 3.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    ruby-progressbar (1.8.1)
+    ruby_cleverbot (0.1.4)
+      rest-client (>= 1.6, < 3.0)
+    rufus-scheduler (3.3.2)
+      tzinfo
+    signet (0.7.3)
+      addressable (~> 2.3)
+      faraday (~> 0.9)
+      jwt (~> 1.5)
+      multi_json (~> 1.10)
+    sqlite3 (1.3.13)
+    thread_safe (0.3.5)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
+    unicode-display_width (1.1.3)
+    websocket (1.2.3)
+    websocket-client-simple (0.3.0)
+      event_emitter
+      websocket
+    wikipedia-client (1.6.3)
+    yajl-ruby (1.3.0)
+    yourub (2.0.3)
+      google-api-client (~> 0.7, < 0.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dentaku
+  discordrb!
+  googl
+  myanimelist!
+  pastebin-api
+  rounding
+  rubocop
+  ruby_cleverbot
+  rufus-scheduler
+  sqlite3
+  wikipedia-client
+  yajl-ruby
+  yourub
+
+BUNDLED WITH
+   1.13.6

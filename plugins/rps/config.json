@@ -1,0 +1,10 @@
+{
+  "options": [
+    "rock",
+    "paper",
+    "scissors"
+  ],
+  "messages": [
+    "I chose %{option}."
+  ]
+}

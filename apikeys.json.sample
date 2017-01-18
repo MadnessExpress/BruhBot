@@ -1,0 +1,11 @@
+{
+  "discord_token": "Your token here",
+  "discord_app_id": "Your app id here",
+  "googl_ip": "The ip of your server here",
+  "googl_api_key": "Your googl api key here",
+  "pastebin_api_key": "Your pastebin api key here",
+  "youtube_api_key": "Your youtube api key here",
+  "myanime_list_user": "Your myanimelist username here",
+  "myanime_list_pass": "Your myanimelist pass here",
+  "stikked_api_url": "The url for your instance of stikked"
+}

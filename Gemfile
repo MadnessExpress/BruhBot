@@ -1,11 +1,13 @@
-source "https://rubygems.org"
-gem "discordrb", git: 'git://github.com/meew0/discordrb.git'
-gem "googl"
-gem "pastebin-api"
-gem "sqlite3"
-gem "ruby_cleverbot"
-gem "wikipedia-client"
-gem "yourub"
-gem "json"
-gem "myanimelist"
-gem "rounding"
+source 'https://rubygems.org'
+gem 'dentaku'
+gem 'discordrb', git: 'https://github.com/FormalHellhound/discordrb.git', branch: 'improvements/permitted_roles'
+gem 'googl'
+gem 'myanimelist', git: 'https://github.com/FormalHellhound/myanimelist.git'
+gem 'pastebin-api'
+gem 'rounding'
+gem 'rubocop'
+gem 'ruby_cleverbot'
+gem 'sqlite3'
+gem 'wikipedia-client'
+gem 'yajl-ruby'
+gem 'yourub'

@@ -1,0 +1,17 @@
+{
+  "symbols": [
+    "+",
+    "-",
+    "*",
+    "/"
+  ],
+  "coin": [
+    "You flipped heads.",
+    "You flipped tails."
+  ],
+  "fudge": [
+    "+",
+    "-",
+    "blank"
+  ]
+}
