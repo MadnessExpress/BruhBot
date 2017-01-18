@@ -1,8 +1,0 @@
-{
-  "game_name": ":video_game: %{gamename} :video_game:",
-  "play_message": [
-    "The following game invite was sent:"
-  ],
-  "embed_image": "http://i.imgur.com/v6M4DWs.png",
-  "embed_color": 2125188
-}
