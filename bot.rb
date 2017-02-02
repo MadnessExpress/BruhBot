@@ -11,6 +11,8 @@ module BruhBot
     attr_accessor :conf
     attr_accessor :api
     attr_accessor :bot
+    attr_accessor :db_version
+    attr_accessor :git_db_version
   end
 
   $LOAD_PATH << File.join(File.dirname(__FILE__))
@@ -22,6 +24,13 @@ module BruhBot
     client_id: api['discord_app_id'],
     prefix: conf['prefix']
   )
+  self.git_db_version = Yajl::Parser.parse(
+    File.new('plugins/dbversion.json', 'r')
+  )
+
+  db = SQLite3::Database.new 'db/server.db'
+  db.execute('PRAGMA user_version = 1.0') if conf['first_run'] == 1
+  self.db_version = db.execute('PRAGMA user_version')
 
   Dir.mkdir('db') unless File.exist?('db')
   Dir.mkdir('logs') unless File.exist?('logs')
@@ -51,6 +60,8 @@ module BruhBot
   Yajl::Encoder.encode(
     conf, [File.new('config.json', 'w'), { pretty: true, indent: '\t' }]
   )
+
+  db.execute('PRAGMA user_version = ?', git_db_version['version'])
 
   bot.run
 end
