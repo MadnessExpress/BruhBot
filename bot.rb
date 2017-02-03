@@ -30,7 +30,7 @@ module BruhBot
 
   db = SQLite3::Database.new 'db/server.db'
   db.execute('PRAGMA user_version = 1.0') if conf['first_run'] == 1
-  self.db_version = db.execute('PRAGMA user_version')
+  self.db_version = db.execute('PRAGMA user_version')[0][0]
 
   Dir.mkdir('db') unless File.exist?('db')
   Dir.mkdir('logs') unless File.exist?('logs')
@@ -61,7 +61,7 @@ module BruhBot
     conf, [File.new('config.json', 'w'), { pretty: true, indent: '\t' }]
   )
 
-  db.execute('PRAGMA user_version = ?', git_db_version['version'])
+  db.execute('PRAGMA user_version = ()?)', git_db_version['version'])
 
   bot.run
 end
