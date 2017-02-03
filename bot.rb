@@ -1,4 +1,4 @@
-#!/home/atlas/.rbenv/shims/ruby
+#!/usr/bin/env ruby
 
 require 'bundler/setup'
 require 'discordrb'
@@ -28,14 +28,11 @@ module BruhBot
     File.new('plugins/dbversion.json', 'r')
   )
 
+  Dir.mkdir('db') unless File.exist?('db')
+
   db = SQLite3::Database.new 'db/server.db'
   db.execute('PRAGMA user_version = 1.0') if conf['first_run'] == 1
   self.db_version = db.execute('PRAGMA user_version')[0][0]
-
-  Dir.mkdir('db') unless File.exist?('db')
-  Dir.mkdir('logs') unless File.exist?('logs')
-  Dir.mkdir('logs/commandlogs') unless File.exist?('logs/commandlogs')
-  Dir.mkdir('logs/messagelogs') unless File.exist?('logs/messagelogs')
 
   require 'plugins/permissions/permissions.rb' if File.exist?(
     'plugins/permissions/permissions.rb'
@@ -59,7 +56,7 @@ module BruhBot
     conf, [File.new('config.json', 'w'), { pretty: true, indent: '\t' }]
   )
 
-  db.execute("PRAGMA user_version = git_db_version['version']")
+  db.execute("PRAGMA user_version = #{git_db_version['version']}")
 
   bot.run
 end

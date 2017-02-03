@@ -115,8 +115,6 @@ GEM
     ruby-progressbar (1.8.1)
     ruby_cleverbot (0.1.4)
       rest-client (>= 1.6, < 3.0)
-    rufus-scheduler (3.3.2)
-      tzinfo
     signet (0.7.3)
       addressable (~> 2.3)
       faraday (~> 0.9)
@@ -151,11 +149,10 @@ DEPENDENCIES
   rounding
   rubocop
   ruby_cleverbot
-  rufus-scheduler
   sqlite3
   wikipedia-client
   yajl-ruby
   yourub
 
 BUNDLED WITH
-   1.13.6
+   1.13.7
