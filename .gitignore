@@ -1,2 +1,4 @@
 db/*
-logs/*
+apikeys.json
+config.json
+/plugins

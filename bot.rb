@@ -54,14 +54,12 @@ module BruhBot
   puts "This bot's invite URL is #{bot.invite_url}&permissions=261120"
   puts 'Click on it to invite it to your server.'
 
-  File.delete('plugins/update.txt') if File.exist?('plugins/update.txt')
-
   conf['first_run'] = 0
   Yajl::Encoder.encode(
     conf, [File.new('config.json', 'w'), { pretty: true, indent: '\t' }]
   )
 
-  db.execute('PRAGMA user_version = ()?)', git_db_version['version'])
+  db.execute("PRAGMA user_version = git_db_version['version']")
 
   bot.run
 end
