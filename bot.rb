@@ -4,6 +4,7 @@ require 'bundler/setup'
 require 'discordrb'
 require 'sqlite3'
 require 'yajl'
+require_relative('classes.rb')
 
 # This is the main bot Module
 module BruhBot
