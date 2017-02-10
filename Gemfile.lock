@@ -1,16 +1,15 @@
 GIT
   remote: https://github.com/FormalHellhound/discordrb.git
-  revision: b967bb8012579a9b52e5edd439f5f0e4dc524cbf
+  revision: 3d54dd59cc9bcdf529394cec0dadc3988412fb74
   branch: improvements/permitted_roles
   specs:
-    discordrb (3.1.1)
-      activesupport
-      discordrb-webhooks
+    discordrb (3.2.0.1)
+      discordrb-webhooks (~> 3.2.0.1)
       opus-ruby
-      rbnacl
+      rbnacl (~> 3.4.0)
       rest-client
       websocket-client-simple (>= 0.3.0)
-    discordrb-webhooks (0.1.0)
+    discordrb-webhooks (3.2.0.1)
       rest-client
 
 GIT
@@ -30,8 +29,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.5.0)
-      public_suffix (~> 2.0, >= 2.0.2)
+    addressable (2.3.8)
     ast (2.3.0)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
@@ -69,11 +67,15 @@ GEM
       signet (~> 0.7)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    httparty (0.14.0)
+    httparty (0.12.0)
+      json (~> 1.8)
       multi_xml (>= 0.5.2)
-    i18n (0.7.0)
+    i18n (0.8.0)
     json (1.8.6)
     jwt (1.5.6)
+    kappa (1.0.2)
+      addressable (~> 2.3.5)
+      httparty (~> 0.12.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     little-plugger (1.1.4)
@@ -92,13 +94,12 @@ GEM
     opus-ruby (1.0.1)
       ffi
     os (0.9.6)
-    parser (2.3.3.1)
+    parser (2.4.0.0)
       ast (~> 2.2)
     pastebin-api (1.0.5)
     powerpack (0.1.1)
-    public_suffix (2.0.5)
     rainbow (2.2.1)
-    rbnacl (4.0.1)
+    rbnacl (3.4.0)
       ffi
     rest-client (2.0.0)
       http-cookie (>= 1.0.2, < 2.0)
@@ -106,14 +107,14 @@ GEM
       netrc (~> 0.8)
     retriable (1.4.1)
     rounding (1.0.1)
-    rubocop (0.47.0)
+    rubocop (0.47.1)
       parser (>= 2.3.3.1, < 3.0)
       powerpack (~> 0.1)
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
-    ruby_cleverbot (0.1.4)
+    ruby_cleverbot (0.1.5)
       rest-client (>= 1.6, < 3.0)
     signet (0.7.3)
       addressable (~> 2.3)
@@ -128,7 +129,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.2)
     unicode-display_width (1.1.3)
-    websocket (1.2.3)
+    websocket (1.2.4)
     websocket-client-simple (0.3.0)
       event_emitter
       websocket
@@ -144,6 +145,7 @@ DEPENDENCIES
   dentaku
   discordrb!
   googl
+  kappa
   myanimelist!
   pastebin-api
   rounding
