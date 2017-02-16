@@ -20,6 +20,18 @@ GIT
       activesupport
       rest-client
 
+PATH
+  remote: /home/atlas/rubyprojects/cleverbot-api
+  specs:
+    ruby-cleverbot-api (1.0.2)
+
+PATH
+  remote: /home/atlas/rubyprojects/kappa
+  specs:
+    kappa (2.0.0)
+      addressable (~> 2.3)
+      httparty (~> 0.13)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -29,7 +41,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.8)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
     ast (2.3.0)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
@@ -67,15 +80,11 @@ GEM
       signet (~> 0.7)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    httparty (0.12.0)
-      json (~> 1.8)
+    httparty (0.14.0)
       multi_xml (>= 0.5.2)
     i18n (0.8.0)
     json (1.8.6)
     jwt (1.5.6)
-    kappa (1.0.2)
-      addressable (~> 2.3.5)
-      httparty (~> 0.12.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     little-plugger (1.1.4)
@@ -98,6 +107,7 @@ GEM
       ast (~> 2.2)
     pastebin-api (1.0.5)
     powerpack (0.1.1)
+    public_suffix (2.0.5)
     rainbow (2.2.1)
     rbnacl (3.4.0)
       ffi
@@ -114,8 +124,6 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
-    ruby_cleverbot (0.1.5)
-      rest-client (>= 1.6, < 3.0)
     signet (0.7.3)
       addressable (~> 2.3)
       faraday (~> 0.9)
@@ -145,12 +153,12 @@ DEPENDENCIES
   dentaku
   discordrb!
   googl
-  kappa
+  kappa!
   myanimelist!
   pastebin-api
   rounding
   rubocop
-  ruby_cleverbot
+  ruby-cleverbot-api!
   sqlite3
   wikipedia-client
   yajl-ruby
