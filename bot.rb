@@ -62,7 +62,10 @@ module BruhBot
     conf, [File.new('config.json', 'w'), { pretty: true, indent: '\t' }]
   )
 
-  db.execute("PRAGMA user_version = #{git_db_version}")
+  db.execute(
+    'INSERT INTO data (version) '\
+    'VALUES (?) WHERE id = (?)', git_db_version, 1
+  )
 
   bot.run
 end
