@@ -63,8 +63,7 @@ module BruhBot
   )
 
   db.execute(
-    'INSERT INTO data (version) '\
-    'VALUES (?) WHERE id = (?)', git_db_version, 1
+    'UPDATE data SET version = (?) WHERE id = (?)', git_db_version, 1
   )
 
   bot.run
