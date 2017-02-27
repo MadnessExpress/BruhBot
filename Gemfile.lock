@@ -13,24 +13,21 @@ GIT
       rest-client
 
 GIT
+  remote: https://github.com/FormalHellhound/kappa.git
+  revision: e5e2b3d5ded0985c4eeb2446662d6f2c3a11ee90
+  branch: api-v5
+  specs:
+    kappa (2.0.0)
+      addressable (~> 2.3)
+      httparty (~> 0.13)
+
+GIT
   remote: https://github.com/FormalHellhound/myanimelist.git
   revision: e9b96e5d76d05fcdd2c70a35cc2dfd681f849e5a
   specs:
     myanimelist (0.0.6)
       activesupport
       rest-client
-
-PATH
-  remote: /home/atlas/rubyprojects/cleverbot-api
-  specs:
-    ruby-cleverbot-api (1.0.2)
-
-PATH
-  remote: /home/atlas/rubyprojects/kappa
-  specs:
-    kappa (2.0.0)
-      addressable (~> 2.3)
-      httparty (~> 0.13)
 
 GEM
   remote: https://rubygems.org/
@@ -123,6 +120,7 @@ GEM
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
+    ruby-cleverbot-api (1.0.6)
     ruby-progressbar (1.8.1)
     signet (0.7.3)
       addressable (~> 2.3)
@@ -158,7 +156,7 @@ DEPENDENCIES
   pastebin-api
   rounding
   rubocop
-  ruby-cleverbot-api!
+  ruby-cleverbot-api
   sqlite3
   wikipedia-client
   yajl-ruby

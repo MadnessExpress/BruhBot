@@ -25,15 +25,20 @@ module BruhBot
     client_id: api['discord_app_id'],
     prefix: conf['prefix']
   )
-  self.git_db_version = Yajl::Parser.parse(
+  db_version_conf = Yajl::Parser.parse(
     File.new('plugins/dbversion.json', 'r')
   )
+  self.git_db_version = db_version_conf['version']
 
   Dir.mkdir('db') unless File.exist?('db')
+  Dir.mkdir('avatars') unless File.exist?('avatars')
 
   db = SQLite3::Database.new 'db/server.db'
-  db.execute('PRAGMA user_version = 1.0') if conf['first_run'] == 1
-  self.db_version = db.execute('PRAGMA user_version')[0][0]
+  self.db_version = db.execute('SELECT version FROM data WHERE id = (?)', 1)[0][0] unless BruhBot.conf['first_run'] == 1
+  if BruhBot.conf['first_run'] == 1 ||
+     BruhBot.db_version < BruhBot.git_db_version
+    require "#{__dir__}/database.rb"
+  end
 
   require 'plugins/permissions/permissions.rb' if File.exist?(
     'plugins/permissions/permissions.rb'
@@ -57,7 +62,7 @@ module BruhBot
     conf, [File.new('config.json', 'w'), { pretty: true, indent: '\t' }]
   )
 
-  db.execute("PRAGMA user_version = #{git_db_version['version']}")
+  db.execute("PRAGMA user_version = #{git_db_version}")
 
   bot.run
 end
