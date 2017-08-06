@@ -5,6 +5,8 @@ require 'discordrb'
 require 'sqlite3'
 require 'yajl'
 require_relative('classes.rb')
+require_relative('update.rb')
+require_relative('roles.rb')
 
 # This is the main bot Module
 module BruhBot
@@ -25,20 +27,10 @@ module BruhBot
     client_id: api['discord_app_id'],
     prefix: conf['prefix']
   )
-  db_version_conf = Yajl::Parser.parse(
-    File.new('plugins/dbversion.json', 'r')
-  )
-  self.git_db_version = db_version_conf['version']
 
-  Dir.mkdir('db') unless File.exist?('db')
   Dir.mkdir('avatars') unless File.exist?('avatars')
 
   db = SQLite3::Database.new 'db/server.db'
-  self.db_version = db.execute('SELECT version FROM data WHERE id = (?)', 1)[0][0] unless BruhBot.conf['first_run'] == 1
-  if BruhBot.conf['first_run'] == 1 ||
-     BruhBot.db_version < BruhBot.git_db_version
-    require "#{__dir__}/database.rb"
-  end
 
   require 'plugins/permissions/permissions.rb' if File.exist?(
     'plugins/permissions/permissions.rb'
@@ -57,13 +49,8 @@ module BruhBot
   puts "This bot's invite URL is #{bot.invite_url}&permissions=261120"
   puts 'Click on it to invite it to your server.'
 
-  conf['first_run'] = 0
   Yajl::Encoder.encode(
     conf, [File.new('config.json', 'w'), { pretty: true, indent: '\t' }]
-  )
-
-  db.execute(
-    'UPDATE data SET version = (?) WHERE id = (?)', git_db_version, 1
   )
 
   bot.run
