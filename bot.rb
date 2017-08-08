@@ -54,13 +54,26 @@ module BruhBot
       self.server = s
       require_relative('serverdb')
       event.bot.server(s).members.each do |m|
-        db = SQLite3::Database.new "db/#{s}.db"
+        db = SQLite3::Database.new "db/#{server}.db"
         db.execute('INSERT OR IGNORE INTO currency (userid, amount) '\
                    'VALUES (?, ?)', m.id, 100)
         db.execute('INSERT OR IGNORE INTO levels (userid, level, xp) '\
                    'VALUES (?, ?, ?)', m.id, 1, 0)
         db.close if db
       end
+    end
+  end
+
+  server_create do |event|
+    self.server = event.server.id
+    require_relative('serverdb')
+    event.bot.server(event.server.id).members.each do |m|
+      db = SQLite3::Database.new "db/#{server}.db"
+      db.execute('INSERT OR IGNORE INTO currency (userid, amount) '\
+                 'VALUES (?, ?)', m.id, 100)
+      db.execute('INSERT OR IGNORE INTO levels (userid, level, xp) '\
+                 'VALUES (?, ?, ?)', m.id, 1, 0)
+      db.close if db
     end
   end
 
