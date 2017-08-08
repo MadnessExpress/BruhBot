@@ -64,7 +64,7 @@ module BruhBot
     end
   end
 
-  server_create do |event|
+  bot.server_create do |event|
     self.server = event.server.id
     require_relative('serverdb')
     event.bot.server(event.server.id).members.each do |m|
