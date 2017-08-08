@@ -22,6 +22,7 @@ module Roles
     attr_accessor :roll_mod_roles
     attr_accessor :roll_fudge_roles
     attr_accessor :coin_roles
+    attr_accessor :emojicode_roles
     attr_accessor :short_roles
     attr_accessor :level_roles
     attr_accessor :level_user_roles
@@ -46,10 +47,12 @@ module Roles
     attr_accessor :say_roles
     attr_accessor :say_channel_roles
     attr_accessor :wiki_roles
+    attr_accessor :xl_roles
+    attr_accessor :xl_nick_roles
     attr_accessor :youtube_roles
   end
 
-  db = SQLite3::Database.new 'db/server.db'
+  db = SQLite3::Database.new 'db/general.db'
 
 # 8ball ########################################################################
   eightball_string = db.execute(
@@ -167,6 +170,12 @@ module Roles
     'SELECT roles FROM perms WHERE command = ?', 'coin'
   )[0][0]
   self.coin_roles = coin_string.split(',').map(&:to_i) unless coin_string.nil?
+
+# Emojicode ####################################################################
+  emojicode_string = db.execute(
+    'SELECT roles FROM perms WHERE command = ?', 'emojicode'
+  )[0][0]
+  self.emojicode_roles = emojicode_string.split(',').map(&:to_i) unless emojicode_string.nil?
 
 # Googl URL Shortener ##########################################################
   short_string = db.execute(
@@ -300,6 +309,17 @@ module Roles
     'SELECT roles FROM perms WHERE command = ?', 'wiki'
   )[0][0]
   self.wiki_roles = wiki_string.split(',').map(&:to_i) unless wiki_string.nil?
+
+# Xl ###########################################################################
+  xl_string = db.execute(
+    'SELECT roles FROM perms WHERE command = ?', 'xl'
+  )[0][0]
+  self.xl_roles = xl_string.split(',').map(&:to_i) unless xl_string.nil?
+
+  xl_nick_string = db.execute(
+    'SELECT roles FROM perms WHERE command = ?', 'xl.nick'
+  )[0][0]
+  self.xl_nick_roles = xl_nick_string.split(',').map(&:to_i) unless xl_nick_string.nil?
 
 # Youtube ######################################################################
   youtube_string = db.execute(

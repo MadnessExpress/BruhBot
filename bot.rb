@@ -5,8 +5,6 @@ require 'discordrb'
 require 'sqlite3'
 require 'yajl'
 require_relative('classes.rb')
-require_relative('update.rb')
-require_relative('roles.rb')
 
 # This is the main bot Module
 module BruhBot
@@ -14,8 +12,7 @@ module BruhBot
     attr_accessor :conf
     attr_accessor :api
     attr_accessor :bot
-    attr_accessor :db_version
-    attr_accessor :git_db_version
+    attr_accessor :server
   end
 
   $LOAD_PATH << File.join(File.dirname(__FILE__))
@@ -29,8 +26,6 @@ module BruhBot
   )
 
   Dir.mkdir('avatars') unless File.exist?('avatars')
-
-  db = SQLite3::Database.new 'db/server.db'
 
   require 'plugins/permissions/permissions.rb' if File.exist?(
     'plugins/permissions/permissions.rb'
@@ -52,6 +47,22 @@ module BruhBot
   Yajl::Encoder.encode(
     conf, [File.new('config.json', 'w'), { pretty: true, indent: '\t' }]
   )
+
+# Configure a database for each connected server.
+  bot.ready do |event|
+    event.bot.servers.keys.each do |s|
+      self.server = s
+      require_relative('serverdb')
+      event.bot.server(s).members.each do |m|
+        db = SQLite3::Database.new "db/#{s}.db"
+        db.execute('INSERT OR IGNORE INTO currency (userid, amount) '\
+                   'VALUES (?, ?)', m.id, 100)
+        db.execute('INSERT OR IGNORE INTO levels (userid, level, xp) '\
+                   'VALUES (?, ?, ?)', m.id, 1, 0)
+        db.close if db
+      end
+    end
+  end
 
   bot.run
 end
