@@ -156,7 +156,10 @@ db.execute(
 db.execute('INSERT OR IGNORE INTO perms (command) VALUES (?)', 'short')
 
 # Set up levels in roles db
-db.execute('INSERT OR IGNORE INTO perms (command) VALUES (?)', 'level')
+db.execute(
+  'INSERT OR IGNORE INTO perms (command) '\
+  'VALUES (?), (?)', 'level', 'level.user'
+)
 
 # Set up lotto in roles db
 db.execute(

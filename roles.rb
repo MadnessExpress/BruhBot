@@ -24,6 +24,7 @@ module Roles
     attr_accessor :coin_roles
     attr_accessor :short_roles
     attr_accessor :level_roles
+    attr_accessor :level_user_roles
     attr_accessor :lotto_start_roles
     attr_accessor :lotto_enter_roles
     attr_accessor :lotto_end_roles
@@ -178,6 +179,11 @@ module Roles
     'SELECT roles FROM perms WHERE command = ?', 'level'
   )[0][0]
   self.level_roles = level_string.split(',').map(&:to_i) unless level_string.nil?
+
+  level_user_string = db.execute(
+    'SELECT roles FROM perms WHERE command = ?', 'level.user'
+  )[0][0]
+  self.level_user_roles = level_user_string.split(',').map(&:to_i) unless level_user_string.nil?
 
 # Lotto ########################################################################
   lotto_start_string = db.execute(
