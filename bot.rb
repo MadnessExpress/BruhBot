@@ -5,6 +5,7 @@ require 'discordrb'
 require 'sqlite3'
 require 'yajl'
 require_relative('classes.rb')
+require_relative('serverdb.rb')
 
 # This is the main bot Module
 module BruhBot
@@ -51,10 +52,9 @@ module BruhBot
 # Configure a database for each connected server.
   bot.ready do |event|
     event.bot.servers.keys.each do |s|
-      self.server = s
-      require_relative('serverdb.rb')
+      dbSetup(s)
       event.bot.server(s).members.each do |m|
-        db = SQLite3::Database.new "db/#{server}.db"
+        db = SQLite3::Database.new "db/#{s}.db"
         db.execute('INSERT OR IGNORE INTO currency (userid, amount) '\
                    'VALUES (?, ?)', m.id, 100)
         db.execute('INSERT OR IGNORE INTO levels (userid, level, xp) '\
@@ -65,10 +65,10 @@ module BruhBot
   end
 
   bot.server_create do |event|
-    self.server = event.server.id
-    require_relative('serverdb.rb')
-    event.bot.server.members.each do |m|
-      db = SQLite3::Database.new "db/#{server}.db"
+    joinedServer = event.server.id
+    dbSetup(joinedServer)
+    event.bot.server(event.server.id).members.each do |m|
+      db = SQLite3::Database.new "db/#{joinedServer}.db"
       db.execute('INSERT OR IGNORE INTO currency (userid, amount) '\
                  'VALUES (?, ?)', m.id, 100)
       db.execute('INSERT OR IGNORE INTO levels (userid, level, xp) '\
