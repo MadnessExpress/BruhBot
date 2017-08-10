@@ -2,3 +2,4 @@ db/*
 apikeys.json
 config.json
 /plugins
+images/spoiler/*

@@ -6,6 +6,7 @@ Dependencies
 ------------
 * Ruby 2.1+
 * [Bundler](https://github.com/bundler/bundler) Ruby Gem Bundler.
+* Image Magick
 
 Other dependencies are listed in the Gemfile.
 
@@ -27,7 +28,10 @@ Installation - Linux
    Install bundler by running the following command:
 	   `gem install bundler`
 
-6. Now run the command:
+6. Install Image Magick:
+   `sudo apt-get install imagemagick libmagickwand-dev`
+
+7. Now run the command:
      `bundle install`
    to install all of the dependencies.
 

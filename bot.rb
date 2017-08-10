@@ -4,6 +4,7 @@ require 'bundler/setup'
 require 'discordrb'
 require 'sqlite3'
 require 'yajl'
+require 'fileutils'
 require_relative('classes.rb')
 require_relative('serverdb.rb')
 
@@ -26,7 +27,8 @@ module BruhBot
     prefix: conf['prefix']
   )
 
-  Dir.mkdir('avatars') unless File.exist?('avatars')
+  FileUtils.mkpath 'avatars' unless File.exist?('avatars')
+  FileUtils.mkpath 'images/spoiler' unless File.exist?('images/spoiler')
 
   require 'plugins/permissions/permissions.rb' if File.exist?(
     'plugins/permissions/permissions.rb'

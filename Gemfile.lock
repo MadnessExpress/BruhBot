@@ -115,6 +115,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     retriable (1.4.1)
+    rmagick (2.16.0)
     rounding (1.0.1)
     rubocop (0.49.1)
       parallel (~> 1.10)
@@ -157,6 +158,7 @@ DEPENDENCIES
   kappa!
   myanimelist!
   pastebin-api
+  rmagick
   rounding
   rubocop
   ruby-cleverbot-api
