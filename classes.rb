@@ -47,15 +47,15 @@ def createSpoiler(text, text2, messageid)
     self.pointsize = 16
   }
 
-  if text2.length > text.length
+  if text2.length >= text.length
     metrics = gc.get_multiline_type_metrics(text2)
 
-    width = metrics.width
+    width = metrics.width + 40
     height = metrics.height
   elsif text.length > text2.length
     metrics = gc.get_multiline_type_metrics(text)
 
-    width = metrics.width
+    width = metrics.width + 40
     height = metrics.height
   end
 
@@ -68,7 +68,6 @@ def createSpoiler(text, text2, messageid)
   spoiler.annotate(spoilerText, 0,0,0,0, text){
     self.gravity = Magick::CenterGravity
     self.pointsize = 16
-    #txt.stroke = ‘#000000’
     self.fill = 'white'
   }
 
