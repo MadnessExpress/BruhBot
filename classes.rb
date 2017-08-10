@@ -60,7 +60,7 @@ def createSpoiler(text, text2, messageid)
   end
 
   spoiler = Magick::Image.new(width, height) {
-    self.background_color = '#474A4F'
+    self.background_color = '#36393E'
   }
 
   spoilerText = Draw.new
@@ -72,7 +72,7 @@ def createSpoiler(text, text2, messageid)
   }
 
   spoiler2 = Magick::Image.new(width, height) {
-    self.background_color = '#474A4F'
+    self.background_color = '#36393E'
   }
 
   spoilerText2 = Draw.new
