@@ -29,6 +29,13 @@ GIT
       activesupport
       rest-client
 
+GIT
+  remote: https://github.com/grcdeepak1/youtube-dl.rb.git
+  revision: 33f05e44be38ab9ac7178c4cefd4025d7e538d55
+  specs:
+    youtube-dl.rb (0.3.1.2017.07.15)
+      cocaine (>= 0.5.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,6 +51,9 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
+    climate_control (0.2.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     dentaku (2.0.11)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
@@ -125,6 +135,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-cleverbot-api (1.0.6)
+    ruby-mp3info (0.8.10)
     ruby-progressbar (1.8.1)
     signet (0.7.3)
       addressable (~> 2.3)
@@ -162,10 +173,12 @@ DEPENDENCIES
   rounding
   rubocop
   ruby-cleverbot-api
+  ruby-mp3info
   sqlite3
   wikipedia-client
   yajl-ruby
   yourub
+  youtube-dl.rb!
 
 BUNDLED WITH
-   1.13.7
+   1.15.3

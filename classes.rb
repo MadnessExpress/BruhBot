@@ -1,4 +1,7 @@
 require 'rmagick'
+require 'open-uri'
+require 'mp3info'
+require 'youtube-dl.rb'
 include Magick
 
 class String
@@ -90,4 +93,27 @@ def createSpoiler(text, text2, messageid)
   gif.iterations = 1
   gif.format = 'gif'
   gif.write("images/spoiler/#{messageid}.gif")
+end
+
+def manageMusic(server)
+  music = "data/#{server}/music"
+  if File.exists?(music)
+    Dir.foreach(music) do |file|
+      if ((file.to_s != ".") and (file.to_s != ".."))
+        File.delete("#{music}/#{file}")
+      end
+    end
+  elsif !File.exists?(music)
+    FileUtils.mkpath music unless File.exist?(music)
+  end
+end
+
+def addYoutube(server, message, url)
+  options = {
+    format: 'bestaudio',
+    extract_audio: true,
+    audio_format: 'mp3',
+    output: "data/#{server}/music/#{message}.%(ext)s"
+  }
+  YoutubeDL.download url, options
 end

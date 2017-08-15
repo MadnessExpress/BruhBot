@@ -54,6 +54,7 @@ module BruhBot
 # Configure a database for each connected server.
   bot.ready do |event|
     event.bot.servers.keys.each do |s|
+      manageMusic(s)
       dbSetup(s)
       event.bot.server(s).members.each do |m|
         db = SQLite3::Database.new "db/#{s}.db"
@@ -68,6 +69,7 @@ module BruhBot
 
   bot.server_create do |event|
     joinedServer = event.server.id
+    manageMusic(joinedServer)
     dbSetup(joinedServer)
     event.bot.server(event.server.id).members.each do |m|
       db = SQLite3::Database.new "db/#{joinedServer}.db"

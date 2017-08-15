@@ -7,13 +7,15 @@ Dependencies
 * Ruby 2.1+
 * [Bundler](https://github.com/bundler/bundler) Ruby Gem Bundler.
 * Image Magick
+* libav-tools
+* ffmpeg
 
 Other dependencies are listed in the Gemfile.
 
 Installation - Linux
 ------------
-1. Install git using the command:
-       `sudo apt-get install git`
+1. Install dependencies using the command:
+       `sudo apt-get install git libav-tools imagemagick libmagickwand-dev ffmpeg`
 
 2. Run the command:
       `git clone https://github.com/FormalHellhound/BruhBot.git yourfoldername`
@@ -28,10 +30,7 @@ Installation - Linux
    Install bundler by running the following command:
 	   `gem install bundler`
 
-6. Install Image Magick:
-   `sudo apt-get install imagemagick libmagickwand-dev`
-
-7. Now run the command:
+6. Now run the command:
      `bundle install`
    to install all of the dependencies.
 
