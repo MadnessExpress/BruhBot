@@ -117,3 +117,36 @@ def addYoutube(server, message, url)
   }
   YoutubeDL.download url, options
 end
+
+def pollLoop(server)
+  Thread::abort_on_exception = true
+  pollthread = Thread.new do
+    db = SQLite3::Database.new "db/#{server}.db"
+    time = db.execute('SELECT poll_time FROM poll WHERE id=1')[0][0].to_i
+    channel = db.execute('SELECT channel_id FROM poll WHERE id=1')[0][0].to_i
+    loop do
+      break_loop = false
+      x = db.execute('SELECT elapsed_time FROM poll WHERE id = 1')[0][0]
+      if x <= time
+        db.execute('UPDATE poll SET elapsed_time = elapsed_time + 1 WHERE id = 1')
+        sleep 1
+      else
+        break_loop = true
+      end
+      break if break_loop
+    end
+
+    winner = 'Poll Results:' + "\n\n"
+    winners = db.execute(
+      'SELECT * FROM poll WHERE votes = (SELECT MAX(votes) FROM poll)'
+    )
+
+    winners.each do |w|
+      winner << w[3] + ': with ' + w[4].to_s + ' votes!' + "\n"
+    end
+    BruhBot.bot.send_message(channel, winner)
+    db.execute('DELETE FROM poll')
+    db.execute('DELETE FROM poll_voters')
+    Thread.exit
+  end
+end

@@ -30,22 +30,13 @@ module BruhBot
   FileUtils.mkpath 'avatars' unless File.exist?('avatars')
   FileUtils.mkpath 'images/spoiler' unless File.exist?('images/spoiler')
 
-  require 'plugins/permissions/permissions.rb' if File.exist?(
-    'plugins/permissions/permissions.rb'
-  )
-
   Dir['plugins/*/*.rb'].each do |file|
-    require file unless file == 'plugins/permissions/permissions.rb'
+    require file unless file == 'plugins/twitch/twitch.rb'
   end
 
   Plugins.constants.each do |mod|
     bot.include! Plugins.const_get mod
   end
-
-  # Here we output the invite URL to the console so the bot account can be
-  # invited to the channel.
-  puts "This bot's invite URL is #{bot.invite_url}&permissions=261120"
-  puts 'Click on it to invite it to your server.'
 
   Yajl::Encoder.encode(
     conf, [File.new('config.json', 'w'), { pretty: true, indent: '\t' }]
@@ -64,7 +55,22 @@ module BruhBot
                    'VALUES (?, ?, ?)', m.id, 1, 0)
         db.close if db
       end
+      BruhBot.bot.send_message(s, 'I\'m here and ready for commands!')
+      db = SQLite3::Database.new "db/#{s}.db"
+      pollstarted = ''
+      begin
+        pollstarted = db.execute('SELECT started FROM poll WHERE id=1')[0][0].to_i
+        db.close if db
+      rescue NoMethodError
+        db.close if db
+        next
+      end
+      pollLoop(s)
     end
+    # Here we output the invite URL to the console so the bot account can be
+    # invited to the channel.
+    puts "This bot's invite URL is #{bot.invite_url}&permissions=261120"
+    puts 'Click on it to invite it to your server.'
   end
 
   bot.server_create do |event|

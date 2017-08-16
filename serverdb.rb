@@ -72,6 +72,47 @@ def dbSetup(server)
     end
   end
 
+  # Create polls tables
+  db.execute <<-SQL
+    create table if not exists poll (
+      id int,
+      channel_id int,
+      started int,
+      option text,
+      votes int,
+      poll_time int,
+      elapsed_time int,
+      UNIQUE(id)
+    );
+  SQL
+
+  db.execute <<-SQL
+    create table if not exists poll_voters (
+      userid int,
+      voted int,
+      UNIQUE(userid)
+    );
+  SQL
+
+  query = [
+    'ALTER TABLE poll ADD COLUMN id int, UNIQUE(id)',
+    'ALTER TABLE poll ADD COLUMN channel_id int',
+    'ALTER TABLE poll ADD COLUMN started integer',
+    'ALTER TABLE poll ADD COLUMN option text',
+    'ALTER TABLE poll ADD COLUMN votes integer',
+    'ALTER TABLE poll ADD COLUMN poll_time integer',
+    'ALTER TABLE poll ADD COLUMN elapsed_time integer',
+    'ALTER TABLE poll_voters ADD COLUMN userid int, UNIQUE(userid)',
+    'ALTER TABLE poll_voters ADD COLUMN voted integer'
+  ]
+  query.each do |q|
+    begin
+      db.execute(q)
+    rescue SQLite3::Exception
+      next
+    end
+  end
+
   # Create quotes table
   db.execute <<-SQL
     create table if not exists quotes (
